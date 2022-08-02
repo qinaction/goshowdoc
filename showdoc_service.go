@@ -10,7 +10,7 @@ func InitShowDoc() error {
 	 fmt.Println(viper.GetString("e"))
 	if viper.GetString("e") == "default" {
 		//0不生成文档 1生成ShowDoc 2生成markDown
-		UrlReq := "域名 ` http://mm.cn`\n"
+		UrlReq := "域名 ` http://m.cn`\n"
 		EnableDoc(1, Doc{
 			Url:      "",
 			ApiKey:   "",
