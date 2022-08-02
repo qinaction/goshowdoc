@@ -1,0 +1,7 @@
+#
+# ignore directories & files
+#
+.idea
+.DS_Store
+logs/
+pid.txt
