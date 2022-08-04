@@ -74,17 +74,6 @@ func BindJSON(c interface{}, req interface{}) error {
 	if cli.DocOpen != 0 {
 		cli.Option.Set(c, "req", req)
 	}
-	//验证参数.BindJSON()
-	if err := Validate.Struct(req); err != nil {
-		return errors.New(TransError(err))
-	}
-	return nil
-}
-func BindJSONNotWithValidate(c interface{}, req interface{}) error {
-	//cli.Option.BindJSON(c, req)
-	if cli.DocOpen != 0 {
-		cli.Option.Set(c, "req", req)
-	}
 	return nil
 }
 
