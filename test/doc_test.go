@@ -3,7 +3,7 @@ package test
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"goshowdoc"
+	"github.com/qinaction/goshowdoc"
 	"net/http"
 	"testing"
 )
@@ -51,7 +51,7 @@ func userList(c *gin.Context) {
 		rsp Rsp
 		req u
 	)
-	err := goshowdoc.BindJSON(c, &req)
+	err := goshowdoc.BindJSON(c, req)
 	if err != nil {
 		rsp.ReplyFailOperation(c, err.Error())
 		return
