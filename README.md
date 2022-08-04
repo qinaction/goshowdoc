@@ -1,4 +1,9 @@
 # goshowdoc
+
+```
+ go get github.com/qinaction/goshowdoc
+```
+
 1. 第一步获取：
    在showdoc文档中获取apikey、apitoken、showdocurl写入配置文件中
 
