@@ -2,7 +2,7 @@
 package test
 
 import (
-	"goshowdoc"
+	"github.com/qinaction/goshowdoc"
 )
 
 const (
