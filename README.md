@@ -8,7 +8,7 @@
 ## 图文讲解
 
 ```
-https://www.yuque.com/docs/share/5265e0ca-999b-4fa3-9c7c-235483387656?# 《go集成showdoc》
+https://www.yuque.com/huanlema-37udr/poa29o/cegwlr
 ```
 
 ## 使用方式
