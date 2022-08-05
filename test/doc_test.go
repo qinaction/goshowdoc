@@ -51,8 +51,8 @@ func userList(c *gin.Context) {
 		rsp Rsp
 		req u
 	)
-	err := goshowdoc.BindJSON(c, req)
-	if err != nil {
+	// showDoc绑定参数
+	if err := goshowdoc.BindJSON(c,req);err != nil{
 		rsp.ReplyFailOperation(c, err.Error())
 		return
 	}
