@@ -13,10 +13,10 @@ import (
 func TestGinResp(t *testing.T) {
 	r := gin.New()
 	UrlReq := "测试域名 ` http://xxx.cn`\n"
-	goshowdoc.EnableDoc(2, goshowdoc.Doc{
-		Url:      "https://XX=/api/item/updateByApi",
-		ApiKey:   "XX",
-		ApiToken: "XX",
+	goshowdoc.EnableDoc(goshowdoc.DocOpenTwo, goshowdoc.Doc{
+		Url:      "https://xxxx/server/index.php?s=/api/item/updateByApi",
+		ApiKey:   "5e8xx",
+		ApiToken: "xx",
 		UrlReq: UrlReq,
 	}, goshowdoc.Gin{})
 

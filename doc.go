@@ -17,19 +17,33 @@ import (
 
 // ShowDocTemplateStr 可通过修改模板字符串来变更模板
 var ShowDocTemplateStr = "" +
-	"##### 简要描述\n\n- {{.title}}\n\n" +
-	"##### 请求URL\n\n- {{.url}}\n\n" +
-	"##### 请求路由\n- ` {{.router}} `\n\n" +
-	"##### 请求方式\n- {{.method}}\n\n" +
-	"##### 参数\n\n{{.req}}\n\n\n" +
-	"##### 请求示例\n\n```\n{{.reqExample}}\n```\n" +
-	"##### 返回示例\n\n```\n{{.respExample}}\n```\n\n" +
-	"##### 返回参数说明\n\n{{.resp}}\n\n\n\n" +
-	"##### 备注\n{{.remark}}"
-var MarkdownTemplateStr = "####{{.title}}\n#####请求地址\n```text\n{{.url}}\n```\n#####请求方式\n```text\n{{.method}}\n```\n#####请求参数\n{{.req}}\n#####请求示例\n```text\n{{.reqExample}}\n```\n#####返回示例\n```text\n{{.respExample}}\n```\n#####返回参数说明\n{{.resp}}\n#####备注\n{{.remark}}"
+	"#### 简要描述\n\n- {{.title}}\n\n" +
+	"#### 请求URL\n\n- {{.url}}\n\n" +
+	"#### 请求路由\n- ` {{.router}} `\n\n" +
+	"#### 请求方式\n- {{.method}}\n\n" +
+	"#### 请求参数\n\n{{.req}}\n\n\n" +
+	"#### 请求示例\n\n```\n{{.reqExample}}\n```\n" +
+	"#### 返回参数说明\n\n{{.resp}}\n\n\n\n" +
+	"#### 返回示例\n\n```\n{{.respExample}}\n```\n\n" +
+	"#### 备注\n{{.remark}}"
+var MarkdownTemplateStr = "# <center> {{.title}}\n" +
+	"#### 简要描述\n\n- {{.title}}\n\n" +
+	"#### 请求URL\n\n- {{.url}}\n\n" +
+	"#### 请求路由\n- ` {{.router}} `\n\n" +
+	"#### 请求方式\n- {{.method}}\n\n" +
+	"#### 请求参数\n\n{{.req}}\n\n\n" +
+	"#### 请求示例\n\n```\n{{.reqExample}}\n```\n" +
+	"#### 返回参数说明\n\n{{.resp}}\n\n\n\n" +
+	"#### 返回示例\n\n```\n{{.respExample}}\n```\n\n" +
+	"#### 备注\n{{.remark}}"
 
 var cli *client
 
+const (
+	DocOpenZero = 0  //0不生成文档
+	DocOpenOne = 1   // 1生成ShowDoc
+	DocOpenTwo = 2   //2生成markDown
+)
 type client struct {
 	DocOpen int    `comment:"0不生成文档 1生成ShowDoc 2生成markDown"`
 	Doc     Doc    `comment:"doc配置"`
@@ -228,7 +242,12 @@ func DataGenerate(t int, d data) string {
 		if e.Type.Kind() != reflect.Struct && e.Type.Kind() != reflect.Map {
 			continue
 		}
-		tbl := e.Type.Name() + "\r\n\r\n"
+
+		// 如果等于1 请求参数的结构体不显示
+		tbl := ""
+		if t != 1 {
+			tbl += e.Type.Name() + "\r\n\r\n"
+		}
 		if e.Type.Kind() == reflect.Map {
 			tbl += respMap(str, e, list1)
 			str1 += tbl
